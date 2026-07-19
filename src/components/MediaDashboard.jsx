@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   ArrowLeft, Search, Filter, Monitor, Share2, 
-  Settings, Users, ChevronDown, CheckCircle, Clock, Link2
+  Settings, Users, ChevronDown, CheckCircle, Clock, Link2, TrendingUp
 } from 'lucide-react';
 
 const DashboardCard = ({ title, subtitle, source, children, style, contentStyle }) => (
