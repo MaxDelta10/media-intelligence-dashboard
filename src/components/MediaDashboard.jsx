@@ -364,7 +364,7 @@ export default function MediaDashboard({ onBack }) {
         </div>
 
         {/* Back Button & User Profile Avatar */}
-        {onBack && (
+        {/* {onBack && (
           <button
             onClick={onBack}
             style={{
@@ -397,7 +397,7 @@ export default function MediaDashboard({ onBack }) {
           fontWeight: '700'
         }}>
           DS
-        </div>
+        </div> */}
       </aside>
 
       {/* CONTENT AREA */}
