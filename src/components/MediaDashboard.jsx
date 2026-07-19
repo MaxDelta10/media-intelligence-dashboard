@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  Monitor, Filter, Settings, Users, Clock, 
+import {
+  Monitor, Filter, Settings, Users, Clock,
   ChevronDown, Calendar, Search, ExternalLink, RefreshCw, ArrowLeft,
   TrendingUp, BarChart2, MessageSquare, ThumbsUp, Eye, Heart, Share2, FileText
 } from 'lucide-react';
@@ -128,14 +128,14 @@ const AreaLineChart = ({ lines, xLabels, yLabels, height = 200, viewBoxW = 500, 
 
 // Reusable Dashboard Card Component
 const DashboardCard = ({ title, subtitle, source, children, style, contentStyle }) => (
-  <div style={{ 
-    backgroundColor: '#ffffff', 
-    border: '1px solid #e2e8f0', 
-    borderRadius: '8px', 
-    display: 'flex', 
-    flexDirection: 'column', 
+  <div style={{
+    backgroundColor: '#ffffff',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    display: 'flex',
+    flexDirection: 'column',
     boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
-    ...style 
+    ...style
   }}>
     <div style={{ padding: '18px', flexGrow: 1, display: 'flex', flexDirection: 'column', ...contentStyle }}>
       <h3 style={{ margin: 0, fontSize: '14px', fontWeight: '700', color: '#0f172a' }}>{title}</h3>
@@ -145,14 +145,14 @@ const DashboardCard = ({ title, subtitle, source, children, style, contentStyle 
       </div>
     </div>
     {source && (
-      <div style={{ 
-        padding: '10px 18px', 
-        borderTop: '1px solid #f1f5f9', 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '6px', 
-        fontSize: '11px', 
-        color: '#94a3b8' 
+      <div style={{
+        padding: '10px 18px',
+        borderTop: '1px solid #f1f5f9',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+        fontSize: '11px',
+        color: '#94a3b8'
       }}>
         <ExternalLink size={12} />
         Source: {source}
@@ -293,7 +293,7 @@ export default function MediaDashboard({ onBack }) {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         }
       `}</style>
-      
+
       {/* SIDEBAR */}
       <aside style={{
         width: '64px',
@@ -318,45 +318,45 @@ export default function MediaDashboard({ onBack }) {
           fontSize: '14px',
           marginBottom: '32px'
         }}>
-          mi
+          MI
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flexGrow: 1, width: '100%', alignItems: 'center' }}>
           {/* Top icon - Social Media */}
-          <button 
-            onClick={() => handleTabChange('social')} 
-            style={{ 
-              background: activeTab === 'social' ? '#1e293b' : 'none', 
-              border: 'none', 
-              color: activeTab === 'social' ? '#3b82f6' : '#94a3b8', 
-              cursor: 'pointer', 
-              padding: '12px', 
+          <button
+            onClick={() => handleTabChange('social')}
+            style={{
+              background: activeTab === 'social' ? '#1e293b' : 'none',
+              border: 'none',
+              color: activeTab === 'social' ? '#3b82f6' : '#94a3b8',
+              cursor: 'pointer',
+              padding: '12px',
               borderRadius: '8px',
               transition: 'all 0.2s',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
-            }} 
+            }}
             title="Monitoring Social Media"
           >
             <MessageSquare size={22} />
           </button>
-          
+
           {/* Bottom icon - Online News */}
-          <button 
-            onClick={() => handleTabChange('news')} 
-            style={{ 
-              background: activeTab === 'news' ? '#1e293b' : 'none', 
-              border: 'none', 
-              color: activeTab === 'news' ? '#3b82f6' : '#94a3b8', 
-              cursor: 'pointer', 
-              padding: '12px', 
+          <button
+            onClick={() => handleTabChange('news')}
+            style={{
+              background: activeTab === 'news' ? '#1e293b' : 'none',
+              border: 'none',
+              color: activeTab === 'news' ? '#3b82f6' : '#94a3b8',
+              cursor: 'pointer',
+              padding: '12px',
               borderRadius: '8px',
               transition: 'all 0.2s',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
-            }} 
+            }}
             title="Monitoring Online News"
           >
             <FileText size={22} />
@@ -365,18 +365,18 @@ export default function MediaDashboard({ onBack }) {
 
         {/* Back Button & User Profile Avatar */}
         {onBack && (
-          <button 
-            onClick={onBack} 
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              color: '#94a3b8', 
-              cursor: 'pointer', 
-              padding: '10px', 
+          <button
+            onClick={onBack}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#94a3b8',
+              cursor: 'pointer',
+              padding: '10px',
               marginBottom: '16px',
               borderRadius: '8px',
               transition: 'all 0.2s'
-            }} 
+            }}
             title="Back"
             onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
             onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
@@ -402,7 +402,7 @@ export default function MediaDashboard({ onBack }) {
 
       {/* CONTENT AREA */}
       <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', minWidth: 0, padding: '24px 32px' }}>
-        
+
         {/* HEADER */}
         <header style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -410,8 +410,8 @@ export default function MediaDashboard({ onBack }) {
               {activeTab === 'social' ? 'Social Media' : 'Online News'}
             </h1>
             <span style={{ fontSize: '13px', color: '#64748b', marginTop: '4px' }}>
-              {activeTab === 'social' 
-                ? 'Monitoring Media Sosial - Topik: Presiden Prabowo' 
+              {activeTab === 'social'
+                ? 'Monitoring Media Sosial - Topik: Presiden Prabowo'
                 : 'Monitoring Berita Online - Topik: Presiden Prabowo'}
             </span>
           </div>
@@ -421,7 +421,7 @@ export default function MediaDashboard({ onBack }) {
             <button style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: '#f1f5f9', border: '1px solid #e2e8f0', borderRadius: '4px', padding: '6px 12px', fontSize: '12px', color: '#334155' }}>
               Filter <span style={{ backgroundColor: '#2563eb', color: 'white', padding: '1px 5px', borderRadius: '10px', fontSize: '10px', fontWeight: 'bold' }}>{activeTab === 'social' ? '4' : '3'}</span> <ChevronDown size={12} />
             </button>
-            
+
             <button style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '4px', padding: '6px 12px', fontSize: '12px', color: '#1d4ed8', fontWeight: '600' }}>
               <Users size={12} /> Presiden Prabowo <ChevronDown size={12} />
             </button>
@@ -481,7 +481,7 @@ export default function MediaDashboard({ onBack }) {
         {/* SOCIAL MEDIA VIEW */}
         {activeTab === 'social' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-            
+
             {/* SECTION 1: EXPOSURE & ENGAGEMENT */}
             {(activeSection === 'all' || activeSection === 'exposure') && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -490,7 +490,7 @@ export default function MediaDashboard({ onBack }) {
                     <h2 style={{ fontSize: '15px', fontWeight: '700', color: '#1e293b', margin: 0 }}>Exposure & Engagement Analysis</h2>
                   </div>
                 )}
-                
+
                 {/* KPI CARDS */}
                 <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
                   {socialMetrics.map(kpi => (
@@ -521,39 +521,39 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Exposure Trend & Top Keywords */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Exposure Trend */}
-                  <DashboardCard 
-                    title="Exposure Trend" 
+                  <DashboardCard
+                    title="Exposure Trend"
                     subtitle="Shows the trend in the number of posts and comments over time across social media platforms, indicating shifts in activity and..."
                     source="Social Media"
                   >
                     <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', fontSize: '10px', flexWrap: 'wrap', marginBottom: '12px' }}>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#3b82f6' }}/> Facebook</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#ec4899' }}/> Instagram</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#94a3b8' }}/> Threads</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#0f172a' }}/> Tiktok</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#06b6d4' }}/> Twitter</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#ef4444' }}/> Youtube</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#3b82f6' }} /> Facebook</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ec4899' }} /> Instagram</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#94a3b8' }} /> Threads</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0f172a' }} /> Tiktok</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#06b6d4' }} /> Twitter</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ef4444' }} /> Youtube</span>
                     </div>
                     <AreaLineChart
                       height={200}
-                      xLabels={['09:00','11:00','13:00','15:00','17:00','19:00','21:00','23:00','01:00','03:00','05:00','07:00','09:00']}
-                      yLabels={['0','10K','20K','30K','40K','50K']}
+                      xLabels={['09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00', '23:00', '01:00', '03:00', '05:00', '07:00', '09:00']}
+                      yLabels={['0', '10K', '20K', '30K', '40K', '50K']}
                       lines={[
-                        { data: [72,76,78,80,64,62,88,92,90,52,56,70,54], color: '#06b6d4', width: 2.5, area: true, areaOpacity: 0.15, dotR: 3.5 },
-                        { data: [18,20,22,24,24,25,28,26,14,6,5,8,6], color: '#0f172a', width: 1.5, area: true, areaOpacity: 0.08, dotR: 2.5 },
-                        { data: [6,8,10,12,14,14,16,12,8,4,3,4,3], color: '#94a3b8', width: 1.5, area: true, areaOpacity: 0.06, dotR: 2.5 },
-                        { data: [2,3,4,5,5,6,6,4,3,2,2,2,2], color: '#3b82f6', width: 1.5, dotR: 2 },
-                        { data: [1,2,2,3,3,3,4,3,2,1,1,1,1], color: '#ec4899', width: 1.5, dotR: 2 },
-                        { data: [1,1,1,1,2,2,2,1,1,1,1,1,1], color: '#ef4444', width: 1.5, dotR: 2 }
+                        { data: [72, 76, 78, 80, 64, 62, 88, 92, 90, 52, 56, 70, 54], color: '#06b6d4', width: 2.5, area: true, areaOpacity: 0.15, dotR: 3.5 },
+                        { data: [18, 20, 22, 24, 24, 25, 28, 26, 14, 6, 5, 8, 6], color: '#0f172a', width: 1.5, area: true, areaOpacity: 0.08, dotR: 2.5 },
+                        { data: [6, 8, 10, 12, 14, 14, 16, 12, 8, 4, 3, 4, 3], color: '#94a3b8', width: 1.5, area: true, areaOpacity: 0.06, dotR: 2.5 },
+                        { data: [2, 3, 4, 5, 5, 6, 6, 4, 3, 2, 2, 2, 2], color: '#3b82f6', width: 1.5, dotR: 2 },
+                        { data: [1, 2, 2, 3, 3, 3, 4, 3, 2, 1, 1, 1, 1], color: '#ec4899', width: 1.5, dotR: 2 },
+                        { data: [1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1], color: '#ef4444', width: 1.5, dotR: 2 }
                       ]}
                     />
                   </DashboardCard>
 
                   {/* Top Keywords */}
-                  <DashboardCard 
-                    title="Top Keywords" 
+                  <DashboardCard
+                    title="Top Keywords"
                     subtitle="Displays the top-performing keywords based on the..."
                     source="Social Media"
                   >
@@ -574,26 +574,26 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Engagement History & Top Keywords by Engagement */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Engagement History */}
-                  <DashboardCard 
-                    title="Engagement History" 
+                  <DashboardCard
+                    title="Engagement History"
                     subtitle="Shows engagement trends over a defined time period on social media platforms, including likes, shares, comments, and other..."
                     source="Media Sosial"
                   >
                     <AreaLineChart
                       height={200}
-                      xLabels={['09:00','11:00','13:00','15:00','17:00','19:00','21:00','23:00','01:00','03:00','05:00','07:00','09:00']}
-                      yLabels={['0','5K','10K','15K','20K','25K','30K']}
+                      xLabels={['09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00', '23:00', '01:00', '03:00', '05:00', '07:00', '09:00']}
+                      yLabels={['0', '5K', '10K', '15K', '20K', '25K', '30K']}
                       lines={[
-                        { data: [20,32,28,35,38,70,90,88,50,10,8,6,4], color: '#22d3ee', width: 2.5, area: true, areaOpacity: 0.15, dotR: 3.5 }
+                        { data: [20, 32, 28, 35, 38, 70, 90, 88, 50, 10, 8, 6, 4], color: '#22d3ee', width: 2.5, area: true, areaOpacity: 0.15, dotR: 3.5 }
                       ]}
                     />
                   </DashboardCard>
 
                   {/* Top Keywords by Engagement */}
-                  <DashboardCard 
-                    title="Top Keywords by Engagement" 
+                  <DashboardCard
+                    title="Top Keywords by Engagement"
                     subtitle="Displays the top-performing keywords based on the..."
                     source="Social Media"
                   >
@@ -616,7 +616,7 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Total Posts & Total Engagement Platform tables */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Total Posts Table */}
                   <DashboardCard title="Total Posts" subtitle="Displays the total number of social media posts per platform related to ongoing issues." source="Social Media">
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px', textAlign: 'left' }}>
@@ -685,7 +685,7 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Top Contributors, Top Locations by Engagement & User Location */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: '20px' }}>
-                  
+
                   {/* Top Contributors */}
                   <DashboardCard title="Top Contributors" subtitle="Highlights the most active accounts contributing posts an..." source="Social Media">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px' }}>
@@ -730,9 +730,9 @@ export default function MediaDashboard({ onBack }) {
                             {row.name}
                           </span>
                           <div style={{ flexGrow: 1, height: '12px', position: 'relative', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ 
-                              height: '100%', 
-                              backgroundColor: '#1d4ed8', 
+                            <div style={{
+                              height: '100%',
+                              backgroundColor: '#1d4ed8',
                               width: `${row.percent}%`,
                               borderRadius: '2px'
                             }} />
@@ -771,22 +771,22 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Sentiment Trend & Sentiment Proportion */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Sentiment Trend */}
                   <DashboardCard title="Sentiment Trend" subtitle="Displays changes in sentiment (positive, neutral, negative) over time in social media content." source="Social Media">
                     <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', fontSize: '10px', marginBottom: '8px' }}>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#b91c1c' }}/> Negative</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#4b5563' }}/> Neutral</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#2563eb' }}/> Positive</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#b91c1c' }} /> Negative</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4b5563' }} /> Neutral</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2563eb' }} /> Positive</span>
                     </div>
                     <AreaLineChart
                       height={180}
-                      xLabels={['07 Jun','08 Jun','09 Jun','10 Jun','11 Jun','12 Jun','13 Jun']}
-                      yLabels={['0','100','200','300','400','450']}
+                      xLabels={['07 Jun', '08 Jun', '09 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun']}
+                      yLabels={['0', '100', '200', '300', '400', '450']}
                       lines={[
-                        { data: [60,70,80,85,78,72,68,], color: '#b91c1c', width: 2, area: true, areaOpacity: 0.10, dotR: 3.5 },
-                        { data: [48,55,50,52,50,48,45], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3.5 },
-                        { data: [18,22,15,20,25,30,28], color: '#2563eb', width: 2, dotR: 3.5 }
+                        { data: [60, 70, 80, 85, 78, 72, 68,], color: '#b91c1c', width: 2, area: true, areaOpacity: 0.10, dotR: 3.5 },
+                        { data: [48, 55, 50, 52, 50, 48, 45], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3.5 },
+                        { data: [18, 22, 15, 20, 25, 30, 28], color: '#2563eb', width: 2, dotR: 3.5 }
                       ]}
                     />
                   </DashboardCard>
@@ -800,22 +800,22 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Sentiment by Engagement & Sentiment Proportion by Engagement */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Sentiment by Engagement */}
                   <DashboardCard title="Sentiment By Engagement" subtitle="Displays sentiment trends over time, segmented by engagement volume on social media." source="Social Media">
                     <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', fontSize: '10px', marginBottom: '8px' }}>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#b91c1c' }}/> Negative</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#4b5563' }}/> Neutral</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#2563eb' }}/> Positive</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#b91c1c' }} /> Negative</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4b5563' }} /> Neutral</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2563eb' }} /> Positive</span>
                     </div>
                     <AreaLineChart
                       height={180}
-                      xLabels={['09:00','11:00','13:00','15:00','17:00','19:00','21:00','23:00','01:00','03:00','05:00','07:00','09:00']}
-                      yLabels={['0','0.5M','1.0M','1.5M','2.0M','2.5M','3.0M','3.5M']}
+                      xLabels={['09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00', '23:00', '01:00', '03:00', '05:00', '07:00', '09:00']}
+                      yLabels={['0', '0.5M', '1.0M', '1.5M', '2.0M', '2.5M', '3.0M', '3.5M']}
                       lines={[
-                        { data: [15,30,38,42,55,70,80,65,52,40,48,55,50], color: '#b91c1c', width: 2, area: true, areaOpacity: 0.10, dotR: 3 },
-                        { data: [8,14,18,20,30,40,52,35,22,16,20,24,22], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3 },
-                        { data: [4,6,8,10,12,18,22,14,10,6,8,10,8], color: '#2563eb', width: 2, dotR: 3 }
+                        { data: [15, 30, 38, 42, 55, 70, 80, 65, 52, 40, 48, 55, 50], color: '#b91c1c', width: 2, area: true, areaOpacity: 0.10, dotR: 3 },
+                        { data: [8, 14, 18, 20, 30, 40, 52, 35, 22, 16, 20, 24, 22], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3 },
+                        { data: [4, 6, 8, 10, 12, 18, 22, 14, 10, 6, 8, 10, 8], color: '#2563eb', width: 2, dotR: 3 }
                       ]}
                     />
                   </DashboardCard>
@@ -829,27 +829,27 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Emotion Trend & Emotion Distribution */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Emotion Trend */}
                   <DashboardCard title="Emotion Trend" subtitle="Shows trends in emotional tone (e.g., anger, anticipation, joy, fear) within posts and comments over time." source="Social Media">
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', fontSize: '9px', flexWrap: 'wrap', marginBottom: '8px' }}>
                       {socialEmotionDistribution.map(em => (
-                        <span key={em.label} style={{ display:'flex', alignItems:'center', gap:'2px' }}>
-                          <div style={{ width:'6px', height:'6px', borderRadius:'50%', backgroundColor: em.color }}/> {em.label}
+                        <span key={em.label} style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: em.color }} /> {em.label}
                         </span>
                       ))}
                     </div>
                     <AreaLineChart
                       height={180}
-                      xLabels={['09:00','11:00','13:00','15:00','17:00','19:00','21:00','23:00','01:00','03:00','05:00','07:00','09:00']}
-                      yLabels={['0','50','100','150','200','250']}
+                      xLabels={['09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00', '23:00', '01:00', '03:00', '05:00', '07:00', '09:00']}
+                      yLabels={['0', '50', '100', '150', '200', '250']}
                       lines={[
-                        { data: [30,38,45,55,60,72,80,68,40,20,18,22,16], color: '#8b5cf6', width: 2, area: true, areaOpacity: 0.10, dotR: 3 },
-                        { data: [20,25,30,35,40,50,55,42,28,15,14,16,12], color: '#f59e0b', width: 1.5, dotR: 3 },
-                        { data: [10,12,15,18,20,25,28,22,16,10,8,10,8], color: '#84cc16', width: 1.5, dotR: 3 },
-                        { data: [8,10,12,14,15,18,20,16,12,8,6,8,6], color: '#1d4ed8', width: 1, dotR: 2 },
-                        { data: [6,8,9,10,12,14,15,12,8,5,4,5,4], color: '#dc2626', width: 1, dotR: 2 },
-                        { data: [4,5,6,7,8,10,12,8,6,3,3,4,3], color: '#06b6d4', width: 1, dotR: 2 }
+                        { data: [30, 38, 45, 55, 60, 72, 80, 68, 40, 20, 18, 22, 16], color: '#8b5cf6', width: 2, area: true, areaOpacity: 0.10, dotR: 3 },
+                        { data: [20, 25, 30, 35, 40, 50, 55, 42, 28, 15, 14, 16, 12], color: '#f59e0b', width: 1.5, dotR: 3 },
+                        { data: [10, 12, 15, 18, 20, 25, 28, 22, 16, 10, 8, 10, 8], color: '#84cc16', width: 1.5, dotR: 3 },
+                        { data: [8, 10, 12, 14, 15, 18, 20, 16, 12, 8, 6, 8, 6], color: '#1d4ed8', width: 1, dotR: 2 },
+                        { data: [6, 8, 9, 10, 12, 14, 15, 12, 8, 5, 4, 5, 4], color: '#dc2626', width: 1, dotR: 2 },
+                        { data: [4, 5, 6, 7, 8, 10, 12, 8, 6, 3, 3, 4, 3], color: '#06b6d4', width: 1, dotR: 2 }
                       ]}
                     />
                   </DashboardCard>
@@ -863,25 +863,25 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Emotion Trend by Engagement & Emotion by Engagement */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Emotion Trend by Engagement */}
                   <DashboardCard title="Emotion Trend By Engagement" subtitle="Shows how engagement varies over time in relation to the emotional tone of posts and comments." source="Social Media">
                     <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', fontSize: '9px', flexWrap: 'wrap', marginBottom: '8px' }}>
                       {socialEmotionEngagement.map(em => (
-                        <span key={em.label} style={{ display:'flex', alignItems:'center', gap:'2px' }}>
-                          <div style={{ width:'6px', height:'6px', borderRadius:'50%', backgroundColor: em.color }}/> {em.label}
+                        <span key={em.label} style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: em.color }} /> {em.label}
                         </span>
                       ))}
                     </div>
                     <AreaLineChart
                       height={180}
-                      xLabels={['09:00','11:00','13:00','15:00','17:00','19:00','21:00','23:00','01:00','03:00','05:00','07:00','09:00']}
-                      yLabels={['0','2K','4K','6K','8K','10K','12K']}
+                      xLabels={['09:00', '11:00', '13:00', '15:00', '17:00', '19:00', '21:00', '23:00', '01:00', '03:00', '05:00', '07:00', '09:00']}
+                      yLabels={['0', '2K', '4K', '6K', '8K', '10K', '12K']}
                       lines={[
-                        { data: [15,28,35,40,55,80,90,68,35,12,8,10,6], color: '#f59e0b', width: 2.5, area: true, areaOpacity: 0.12, dotR: 3.5 },
-                        { data: [6,10,14,18,22,35,42,28,16,8,6,8,5], color: '#84cc16', width: 1.5, area: true, areaOpacity: 0.06, dotR: 3 },
-                        { data: [3,5,7,8,10,15,18,12,8,4,3,4,3], color: '#06b6d4', width: 1, dotR: 2 },
-                        { data: [2,3,4,5,6,8,10,6,4,2,2,2,2], color: '#eab308', width: 1, dotR: 2 }
+                        { data: [15, 28, 35, 40, 55, 80, 90, 68, 35, 12, 8, 10, 6], color: '#f59e0b', width: 2.5, area: true, areaOpacity: 0.12, dotR: 3.5 },
+                        { data: [6, 10, 14, 18, 22, 35, 42, 28, 16, 8, 6, 8, 5], color: '#84cc16', width: 1.5, area: true, areaOpacity: 0.06, dotR: 3 },
+                        { data: [3, 5, 7, 8, 10, 15, 18, 12, 8, 4, 3, 4, 3], color: '#06b6d4', width: 1, dotR: 2 },
+                        { data: [2, 3, 4, 5, 6, 8, 10, 6, 4, 2, 2, 2, 2], color: '#eab308', width: 1, dotR: 2 }
                       ]}
                     />
                   </DashboardCard>
@@ -896,9 +896,9 @@ export default function MediaDashboard({ onBack }) {
                 {/* Sentiment Target Stacked Bar Chart */}
                 <DashboardCard title="Sentiment Target" subtitle="Displays sentiment target in social media platforms." source="Social Media">
                   <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', fontSize: '10px', marginBottom: '16px' }}>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#dc2626' }}/> Negative</span>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#4b5563' }}/> Neutral</span>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#2563eb' }}/> Positive</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#dc2626' }} /> Negative</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#4b5563' }} /> Neutral</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#2563eb' }} /> Positive</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', height: '180px', paddingBottom: '20px', overflowX: 'auto' }}>
                     {[
@@ -1088,7 +1088,7 @@ export default function MediaDashboard({ onBack }) {
         {/* ONLINE NEWS VIEW */}
         {activeTab === 'news' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-            
+
             {/* SECTION 1: EXPOSURE & VOLUME */}
             {(activeSection === 'all' || activeSection === 'exposure') && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -1099,37 +1099,49 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* Exposure Trend Bar Chart */}
-                <DashboardCard 
-                  title="Exposure Trend" 
+                <DashboardCard
+                  title="Exposure Trend"
                   subtitle="Displays the trend in exposure, indicating the volume of news coverage published by mainstream media over time."
                   source="Mainstream Media"
                 >
                   <div style={{ height: '180px', marginTop: '16px' }}>
-                    <svg viewBox="0 0 500 150" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-                      {[0, 30, 60, 90, 120, 150].map(y => (
-                        <line key={y} x1="30" y1={y} x2="480" y2={y} stroke="#f1f5f9" />
-                      ))}
-                      {/* News Volume Bars (Copied directly from Ebdesk News screenshot) */}
-                      {[65, 105, 55, 88, 90, 56, 87, 78, 38, 36, 10, 13, 9, 8, 14, 28, 20, 35, 52, 47, 81, 48, 64, 69, 18].map((val, i) => {
-                        const h = (val / 120) * 120;
+                    <svg viewBox="0 0 500 175" style={{ width: '100%', height: '100%' }} preserveAspectRatio="none">
+                      {/* Grid lines (Matching AreaLineChart padding & height) */}
+                      {[0, 20, 40, 60, 80, 100, 120].map(val => {
+                        const y = 135 - (val / 120) * 130;
                         return (
-                          <rect 
-                            key={i} 
-                            x={38 + i * 17.5} 
-                            y={150 - h} 
-                            width="8" 
-                            height={h} 
-                            fill="#1d4ed8" 
-                            rx="1"
+                          <line key={val} x1="35" y1={y} x2="490" y2={y} stroke="#f1f5f9" strokeWidth="0.5" />
+                        );
+                      })}
+                      {/* News Volume Bars (Evenly spaced across the exact same padL=35, padR=10 chart width) */}
+                      {[65, 105, 55, 88, 90, 56, 87, 78, 38, 36, 10, 13, 9, 8, 14, 28, 20, 35, 52, 47, 81, 48, 64, 69, 18].map((val, i) => {
+                        const h = (val / 120) * 130;
+                        const barWidth = 8;
+                        const x = 35 + i * (455 / 24) - barWidth / 2;
+                        const y = 135 - h;
+                        return (
+                          <rect
+                            key={i}
+                            x={x}
+                            y={y}
+                            width={barWidth}
+                            height={h}
+                            fill="#1d4ed8"
+                            rx="1.5"
                           />
                         );
                       })}
+                      {/* X-axis Labels (Precisely aligned under the corresponding columns) */}
                       {['14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00'].map((x, i) => (
-                        <text key={i} x={38 + i * 35} y="165" fill="#94a3b8" fontSize="8" textAnchor="middle">{x}</text>
+                        <text key={i} x={35 + i * (455 / 12)} y="170" fill="#94a3b8" fontSize="7" textAnchor="middle">{x}</text>
                       ))}
-                      {['0', '20', '40', '60', '80', '100', '120'].map((val, i) => (
-                        <text key={i} x="20" y={150 - (val / 120) * 120 + 3} fill="#94a3b8" fontSize="8" textAnchor="end">{val}</text>
-                      ))}
+                      {/* Y-axis Labels */}
+                      {['0', '20', '40', '60', '80', '100', '120'].map((val) => {
+                        const y = 135 - (val / 120) * 130;
+                        return (
+                          <text key={val} x="31" y={y + 2.5} fill="#94a3b8" fontSize="7" textAnchor="end">{val}</text>
+                        );
+                      })}
                     </svg>
                   </div>
                 </DashboardCard>
@@ -1175,18 +1187,18 @@ export default function MediaDashboard({ onBack }) {
                   {/* Sentiment Distribution */}
                   <DashboardCard title="Sentiment Distribution" subtitle="Displays the trend in sentiment over time within mainstream media reporting." source="Mainstream Media">
                     <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', fontSize: '10px', marginBottom: '12px' }}>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#b91c1c' }}/> Negative</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#4b5563' }}/> Neutral</span>
-                      <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'50%', backgroundColor:'#2563eb' }}/> Positive</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#b91c1c' }} /> Negative</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#4b5563' }} /> Neutral</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2563eb' }} /> Positive</span>
                     </div>
                     <AreaLineChart
                       height={180}
-                      xLabels={['14:00','16:00','18:00','20:00','22:00','00:00','02:00','04:00','06:00','08:00','10:00','12:00','14:00']}
-                      yLabels={['0','10','20','30','40','50','60']}
+                      xLabels={['14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00']}
+                      yLabels={['0', '10', '20', '30', '40', '50', '60']}
                       lines={[
-                        { data: [50,80,65,85,70,55,30,15,10,40,50,45,30], color: '#2563eb', width: 2, area: true, areaOpacity: 0.10, dotR: 3.5 },
-                        { data: [28,35,22,30,38,32,20,8,12,22,28,25,18], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3.5 },
-                        { data: [10,18,14,16,20,22,6,4,8,16,18,20,10], color: '#b91c1c', width: 2, dotR: 3.5 }
+                        { data: [50, 80, 65, 85, 70, 55, 30, 15, 10, 40, 50, 45, 30], color: '#2563eb', width: 2, area: true, areaOpacity: 0.10, dotR: 3.5 },
+                        { data: [28, 35, 22, 30, 38, 32, 20, 8, 12, 22, 28, 25, 18], color: '#4b5563', width: 2, area: true, areaOpacity: 0.06, dotR: 3.5 },
+                        { data: [10, 18, 14, 16, 20, 22, 6, 4, 8, 16, 18, 20, 10], color: '#b91c1c', width: 2, dotR: 3.5 }
                       ]}
                     />
                   </DashboardCard>
@@ -1195,9 +1207,9 @@ export default function MediaDashboard({ onBack }) {
                 {/* Sentiment Target Stacked Bar Chart */}
                 <DashboardCard title="Sentiment Target" subtitle="Displays sentiment target in mainstream media coverage." source="Mainstream Media">
                   <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', fontSize: '10px', marginBottom: '16px' }}>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#dc2626' }}/> Negative</span>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#4b5563' }}/> Neutral</span>
-                    <span style={{ display:'flex', alignItems:'center', gap:'4px' }}><div style={{ width:'8px', height:'8px', borderRadius:'2px', backgroundColor:'#2563eb' }}/> Positive</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#dc2626' }} /> Negative</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#4b5563' }} /> Neutral</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#2563eb' }} /> Positive</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', height: '180px', paddingBottom: '20px', overflowX: 'auto' }}>
                     {[
@@ -1419,9 +1431,9 @@ export default function MediaDashboard({ onBack }) {
                             {row.name}
                           </span>
                           <div style={{ flexGrow: 1, height: '10px', backgroundColor: '#f1f5f9', borderRadius: '3px', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-                            <div style={{ 
-                              height: '100%', 
-                              backgroundColor: '#b91c1c', 
+                            <div style={{
+                              height: '100%',
+                              backgroundColor: '#b91c1c',
                               width: `${row.percent}%`,
                               borderRadius: '3px'
                             }} />
@@ -1447,7 +1459,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
                 {/* Latest News Layout (Grid list on left, detailed view on right) */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
-                  
+
                   {/* Left Side: News List */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <h2 style={{ fontSize: '14px', fontWeight: '700', borderLeft: '4px solid #2563eb', paddingLeft: '8px' }}>
@@ -1455,8 +1467,8 @@ export default function MediaDashboard({ onBack }) {
                     </h2>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                       {newsList.map((news) => (
-                        <div 
-                          key={news.id} 
+                        <div
+                          key={news.id}
                           onClick={() => setSelectedNewsId(news.id)}
                           style={{
                             backgroundColor: 'white',
@@ -1474,10 +1486,10 @@ export default function MediaDashboard({ onBack }) {
                           <div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                               <span style={{ fontWeight: '700', fontSize: '11px', color: '#64748b' }}>{news.source}</span>
-                              <span style={{ 
-                                fontSize: '9px', 
-                                fontWeight: '600', 
-                                padding: '2px 6px', 
+                              <span style={{
+                                fontSize: '9px',
+                                fontWeight: '600',
+                                padding: '2px 6px',
                                 borderRadius: '4px',
                                 backgroundColor: news.badge === 'Positive' ? '#dcfce7' : news.badge === 'Negative' ? '#fee2e2' : '#f1f5f9',
                                 color: news.badge === 'Positive' ? '#15803d' : news.badge === 'Negative' ? '#b91c1c' : '#475569'
@@ -1525,9 +1537,9 @@ export default function MediaDashboard({ onBack }) {
                       {newsList[selectedNewsId].title}
                     </h3>
 
-                    <img 
-                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" 
-                      alt="News illustration" 
+                    <img
+                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80"
+                      alt="News illustration"
                       style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '6px', marginBottom: '16px' }}
                     />
 
