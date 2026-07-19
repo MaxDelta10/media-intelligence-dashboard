@@ -1105,20 +1105,20 @@ export default function MediaDashboard({ onBack }) {
                   source="Mainstream Media"
                 >
                   <div style={{ height: '180px', marginTop: '16px' }}>
-                    <svg viewBox="0 0 500 175" style={{ width: '100%', height: '100%' }} preserveAspectRatio="none">
-                      {/* Grid lines (Matching AreaLineChart padding & height) */}
+                    <svg viewBox="0 0 1000 175" style={{ width: '100%', height: '100%' }} preserveAspectRatio="none">
+                      {/* Grid lines (Matching padding & height in 1000px wide viewBox) */}
                       {[0, 20, 40, 60, 80, 100, 120].map(val => {
-                        const y = 135 - (val / 120) * 130;
+                        const y = 145 - (val / 120) * 130;
                         return (
-                          <line key={val} x1="35" y1={y} x2="490" y2={y} stroke="#f1f5f9" strokeWidth="0.5" />
+                          <line key={val} x1="45" y1={y} x2="985" y2={y} stroke="#f1f5f9" strokeWidth="0.75" />
                         );
                       })}
-                      {/* News Volume Bars (Evenly spaced across the exact same padL=35, padR=10 chart width) */}
+                      {/* News Volume Bars (Perfect proportions and spacing to eliminate distortion) */}
                       {[65, 105, 55, 88, 90, 56, 87, 78, 38, 36, 10, 13, 9, 8, 14, 28, 20, 35, 52, 47, 81, 48, 64, 69, 18].map((val, i) => {
                         const h = (val / 120) * 130;
-                        const barWidth = 8;
-                        const x = 35 + i * (455 / 24) - barWidth / 2;
-                        const y = 135 - h;
+                        const barWidth = 14;
+                        const x = 45 + i * (940 / 24) - barWidth / 2;
+                        const y = 145 - h;
                         return (
                           <rect
                             key={i}
@@ -1126,20 +1126,20 @@ export default function MediaDashboard({ onBack }) {
                             y={y}
                             width={barWidth}
                             height={h}
-                            fill="#1d4ed8"
-                            rx="1.5"
+                            fill="#2563eb"
+                            rx="2"
                           />
                         );
                       })}
-                      {/* X-axis Labels (Precisely aligned under the corresponding columns) */}
+                      {/* X-axis Labels */}
                       {['14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00'].map((x, i) => (
-                        <text key={i} x={35 + i * (455 / 12)} y="170" fill="#94a3b8" fontSize="7" textAnchor="middle">{x}</text>
+                        <text key={i} x={45 + i * (940 / 12)} y="165" fill="#94a3b8" fontSize="8" fontWeight="500" textAnchor="middle">{x}</text>
                       ))}
                       {/* Y-axis Labels */}
                       {['0', '20', '40', '60', '80', '100', '120'].map((val) => {
-                        const y = 135 - (val / 120) * 130;
+                        const y = 145 - (val / 120) * 130;
                         return (
-                          <text key={val} x="31" y={y + 2.5} fill="#94a3b8" fontSize="7" textAnchor="end">{val}</text>
+                          <text key={val} x="36" y={y + 3} fill="#94a3b8" fontSize="8" fontWeight="500" textAnchor="end">{val}</text>
                         );
                       })}
                     </svg>
