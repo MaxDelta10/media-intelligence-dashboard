@@ -278,50 +278,324 @@ export default function MediaDashboard({ onBack }) {
   ];
 
   return (
-    <div className="media-intelligence-dashboard-wrapper" style={{
-      display: 'flex',
-      minHeight: '100vh',
-      backgroundColor: '#f8fafc',
-      fontFamily: '"Inter", sans-serif',
-      color: '#0f172a',
-      width: '100vw'
-    }}>
+    <div className="media-intelligence-dashboard-wrapper">
       <style>{`
         /* Protect Dashboard component from parent project retro font overriding */
         .media-intelligence-dashboard-wrapper,
         .media-intelligence-dashboard-wrapper * {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+          box-sizing: border-box;
+        }
+
+        .media-intelligence-dashboard-wrapper {
+          display: flex;
+          flex-direction: row;
+          min-height: 100vh;
+          background-color: #f8fafc;
+          width: 100%;
+          color: #0f172a;
+        }
+        @media (max-width: 768px) {
+          .media-intelligence-dashboard-wrapper {
+            flex-direction: column;
+          }
+        }
+
+        .dashboard-sidebar {
+          width: 64px;
+          background-color: #0f172a;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+          .dashboard-sidebar {
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            padding: 12px 16px;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+          }
+        }
+
+        .dashboard-sidebar-logo {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: #2563eb;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: 800;
+          font-size: 14px;
+          margin-bottom: 32px;
+        }
+        @media (max-width: 768px) {
+          .dashboard-sidebar-logo {
+            margin-bottom: 0;
+          }
+        }
+
+        .dashboard-sidebar-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          flex-grow: 1;
+          width: 100%;
+          align-items: center;
+        }
+        @media (max-width: 768px) {
+          .dashboard-sidebar-nav {
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            margin: 0;
+          }
+        }
+
+        .dashboard-content {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          padding: 24px 32px;
+        }
+        @media (max-width: 768px) {
+          .dashboard-content {
+            padding: 16px 12px;
+          }
+        }
+
+        .dashboard-header-title {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        @media (max-width: 768px) {
+          .dashboard-header-title {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+          }
+        }
+
+        .dashboard-tabs {
+          display: flex;
+          border-bottom: 1px solid #e2e8f0;
+          gap: 24px;
+          margin-top: 4px;
+          overflow-x: auto;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+        .dashboard-tabs::-webkit-scrollbar {
+          display: none;
+        }
+        .dashboard-tabs {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+
+        .dashboard-tab-btn {
+          padding: 8px 4px 12px 4px;
+          font-size: 13px;
+          font-weight: 500;
+          color: #64748b;
+          background: none;
+          border: none;
+          border-bottom: 2px solid transparent;
+          cursor: pointer;
+          margin-bottom: -1px;
+          transition: all 0.2s;
+          flex-shrink: 0;
+        }
+        .dashboard-tab-btn.active {
+          font-weight: 600;
+          color: #2563eb;
+          border-bottom: 2px solid #2563eb;
+        }
+
+        /* Responsive Grid Utilities */
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        @media (max-width: 1024px) {
+          .grid-3 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 640px) {
+          .grid-3 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+
+        .grid-2 {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        @media (max-width: 768px) {
+          .grid-2 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+
+        .grid-1-5-1 {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          gap: 20px;
+        }
+        @media (max-width: 1024px) {
+          .grid-1-5-1 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+
+        .grid-1-1-5 {
+          display: grid;
+          grid-template-columns: 1fr 1.5fr;
+          gap: 20px;
+        }
+        @media (max-width: 1024px) {
+          .grid-1-1-5 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+
+        .grid-1-1-1-2 {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1.2fr;
+          gap: 20px;
+        }
+        @media (max-width: 1024px) {
+          .grid-1-1-1-2 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+        }
+
+        .grid-statements {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        @media (max-width: 640px) {
+          .grid-statements {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .bar-chart-label {
+          width: 90px;
+          text-align: right;
+          margin-right: 12px;
+          font-weight: 500;
+          color: #475569;
+          flex-shrink: 0;
+        }
+        .bar-chart-label-long {
+          width: 120px;
+          text-align: right;
+          margin-right: 12px;
+          font-weight: 500;
+          color: #475569;
+          flex-shrink: 0;
+        }
+        .bar-chart-value {
+          width: 55px;
+          text-align: left;
+          margin-left: 12px;
+          font-weight: 700;
+          color: #0f172a;
+          flex-shrink: 0;
+        }
+        @media (max-width: 640px) {
+          .bar-chart-label {
+            width: 70px;
+            margin-right: 6px;
+            font-size: 10px;
+          }
+          .bar-chart-label-long {
+            width: 80px;
+            margin-right: 6px;
+            font-size: 10px;
+          }
+          .bar-chart-value {
+            width: 45px;
+            margin-left: 6px;
+            font-size: 10px;
+          }
+        }
+
+        .bar-chart-stacked-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-end;
+          height: 180px;
+          padding-bottom: 20px;
+          overflow-x: auto;
+          width: 100%;
+        }
+        .bar-chart-stacked-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 70px;
+          position: relative;
+          flex-shrink: 0;
+        }
+        @media (max-width: 640px) {
+          .bar-chart-stacked-container {
+            justify-content: flex-start;
+            gap: 12px;
+          }
+        }
+
+        .treemap-container {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          grid-auto-rows: 75px;
+          gap: 3px;
+          color: white;
+          font-size: 11px;
+          font-weight: bold;
+        }
+        @media (max-width: 640px) {
+          .treemap-container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: auto;
+            gap: 6px;
+          }
+          .treemap-item {
+            grid-column: span 1 !important;
+            grid-row: span 1 !important;
+            padding: 10px !important;
+            min-height: 60px;
+          }
         }
       `}</style>
 
       {/* SIDEBAR */}
-      <aside style={{
-        width: '64px',
-        backgroundColor: '#0f172a',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px 0',
-        flexShrink: 0
-      }}>
+      <aside className="dashboard-sidebar">
         {/* MI Blue Logo Icon */}
-        <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '50%',
-          backgroundColor: '#2563eb',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontWeight: '800',
-          fontSize: '14px',
-          marginBottom: '32px'
-        }}>
+        <div className="dashboard-sidebar-logo">
           MI
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flexGrow: 1, width: '100%', alignItems: 'center' }}>
+        <div className="dashboard-sidebar-nav">
           {/* Top icon - Social Media */}
           <button
             onClick={() => handleTabChange('social')}
@@ -362,50 +636,14 @@ export default function MediaDashboard({ onBack }) {
             <FileText size={22} />
           </button>
         </div>
-
-        {/* Back Button & User Profile Avatar */}
-        {/* {onBack && (
-          <button
-            onClick={onBack}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#94a3b8',
-              cursor: 'pointer',
-              padding: '10px',
-              marginBottom: '16px',
-              borderRadius: '8px',
-              transition: 'all 0.2s'
-            }}
-            title="Back"
-            onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
-          >
-            <ArrowLeft size={20} />
-          </button>
-        )}
-        <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '50%',
-          backgroundColor: '#3b82f6',
-          color: 'white',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '13px',
-          fontWeight: '700'
-        }}>
-          DS
-        </div> */}
       </aside>
 
       {/* CONTENT AREA */}
-      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', minWidth: 0, padding: '24px 32px' }}>
+      <div className="dashboard-content">
 
         {/* HEADER */}
         <header style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div className="dashboard-header-title">
             <h1 style={{ margin: 0, fontSize: '22px', fontWeight: '700' }}>
               {activeTab === 'social' ? 'Social Media' : 'Online News'}
             </h1>
@@ -448,7 +686,7 @@ export default function MediaDashboard({ onBack }) {
           </div>
 
           {/* SECTION NAVIGATION TABS */}
-          <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0', gap: '24px', marginTop: '4px' }}>
+          <div className="dashboard-tabs">
             {[
               { id: 'all', label: 'All Overview' },
               { id: 'exposure', label: activeTab === 'social' ? 'Exposure & Engagement' : 'Exposure & Volume' },
@@ -459,18 +697,7 @@ export default function MediaDashboard({ onBack }) {
               <button
                 key={sec.id}
                 onClick={() => setActiveSection(sec.id)}
-                style={{
-                  padding: '8px 4px 12px 4px',
-                  fontSize: '13px',
-                  fontWeight: activeSection === sec.id ? '600' : '500',
-                  color: activeSection === sec.id ? '#2563eb' : '#64748b',
-                  background: 'none',
-                  border: 'none',
-                  borderBottom: activeSection === sec.id ? '2px solid #2563eb' : '2px solid transparent',
-                  cursor: 'pointer',
-                  marginBottom: '-1px',
-                  transition: 'all 0.2s'
-                }}
+                className={`dashboard-tab-btn ${activeSection === sec.id ? 'active' : ''}`}
               >
                 {sec.label}
               </button>
@@ -492,7 +719,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* KPI CARDS */}
-                <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+                <section className="grid-3">
                   {socialMetrics.map(kpi => (
                     <div key={kpi.title} style={{
                       backgroundColor: 'white',
@@ -520,7 +747,7 @@ export default function MediaDashboard({ onBack }) {
                 </section>
 
                 {/* Exposure Trend & Top Keywords */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Exposure Trend */}
                   <DashboardCard
@@ -573,7 +800,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Engagement History & Top Keywords by Engagement */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Engagement History */}
                   <DashboardCard
@@ -602,7 +829,7 @@ export default function MediaDashboard({ onBack }) {
                       <span style={{ fontSize: '18px', color: '#0f766e' }}>megawati soekarnoputri</span>
                       <span style={{ fontSize: '20px', color: '#ea580c' }}>vtuber nya bekasus</span>
                       <span style={{ fontSize: '22px', color: '#dc2626' }}>gada nya</span>
-                      <span style={{ fontSize: '16px', color: '#1d4ed8' }}>nonton vtuber</span>
+                      <span style={{ fontSize: '16px', color: '#1d4ed8', font_weight: 'bold' }}>nonton vtuber</span>
                       <span style={{ fontSize: '15px', color: '#ca8a04' }}>presidennya prabowo</span>
                       <span style={{ fontSize: '26px', color: '#b91c1c', fontWeight: 'bold' }}>jawa timur</span>
                       <span style={{ fontSize: '18px', color: '#2563eb' }}>prabowo subianto</span>
@@ -615,7 +842,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Total Posts & Total Engagement Platform tables */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div className="grid-2">
 
                   {/* Total Posts Table */}
                   <DashboardCard title="Total Posts" subtitle="Displays the total number of social media posts per platform related to ongoing issues." source="Social Media">
@@ -684,7 +911,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* Top Contributors, Top Locations by Engagement & User Location */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: '20px' }}>
+                <div className="grid-1-1-1-2">
 
                   {/* Top Contributors */}
                   <DashboardCard title="Top Contributors" subtitle="Highlights the most active accounts contributing posts an..." source="Social Media">
@@ -726,7 +953,7 @@ export default function MediaDashboard({ onBack }) {
                         { name: 'Jawa Barat', val: '610,30', percent: 6.5 }
                       ].map((row, idx) => (
                         <div key={idx} style={{ display: 'flex', alignItems: 'center', height: '20px' }}>
-                          <span style={{ width: '90px', textAlign: 'right', marginRight: '12px', fontWeight: '500', color: '#475569', flexShrink: 0 }}>
+                          <span className="bar-chart-label">
                             {row.name}
                           </span>
                           <div style={{ flexGrow: 1, height: '12px', position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -737,7 +964,7 @@ export default function MediaDashboard({ onBack }) {
                               borderRadius: '2px'
                             }} />
                           </div>
-                          <span style={{ width: '55px', textAlign: 'left', marginLeft: '12px', fontWeight: '700', color: '#0f172a', flexShrink: 0 }}>
+                          <span className="bar-chart-value">
                             {row.val}
                           </span>
                         </div>
@@ -770,7 +997,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* Sentiment Trend & Sentiment Proportion */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Sentiment Trend */}
                   <DashboardCard title="Sentiment Trend" subtitle="Displays changes in sentiment (positive, neutral, negative) over time in social media content." source="Social Media">
@@ -799,7 +1026,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Sentiment by Engagement & Sentiment Proportion by Engagement */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Sentiment by Engagement */}
                   <DashboardCard title="Sentiment By Engagement" subtitle="Displays sentiment trends over time, segmented by engagement volume on social media." source="Social Media">
@@ -828,7 +1055,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Emotion Trend & Emotion Distribution */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Emotion Trend */}
                   <DashboardCard title="Emotion Trend" subtitle="Shows trends in emotional tone (e.g., anger, anticipation, joy, fear) within posts and comments over time." source="Social Media">
@@ -862,7 +1089,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Emotion Trend by Engagement & Emotion by Engagement */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Emotion Trend by Engagement */}
                   <DashboardCard title="Emotion Trend By Engagement" subtitle="Shows how engagement varies over time in relation to the emotional tone of posts and comments." source="Social Media">
@@ -900,7 +1127,7 @@ export default function MediaDashboard({ onBack }) {
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#4b5563' }} /> Neutral</span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#2563eb' }} /> Positive</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', height: '180px', paddingBottom: '20px', overflowX: 'auto' }}>
+                  <div className="bar-chart-stacked-container">
                     {[
                       { name: 'Prabowo', neg: 4800, neu: 2200, pos: 800 },
                       { name: 'Prabowo Subianto', neg: 1800, neu: 600, pos: 700 },
@@ -917,7 +1144,7 @@ export default function MediaDashboard({ onBack }) {
                       const hPos = (target.pos / maxVal) * 120;
 
                       return (
-                        <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '70px', position: 'relative' }}>
+                        <div key={idx} className="bar-chart-stacked-item">
                           <div style={{ width: '22px', height: `${hPos}px`, backgroundColor: '#2563eb' }} />
                           <div style={{ width: '22px', height: `${hNeu}px`, backgroundColor: '#4b5563' }} />
                           <div style={{ width: '22px', height: `${hNeg}px`, backgroundColor: '#b91c1c' }} />
@@ -932,29 +1159,29 @@ export default function MediaDashboard({ onBack }) {
 
                 {/* Top Hashtags Treemap */}
                 <DashboardCard title="Top Hashtags" subtitle="Displays the most frequently used hashtags across social media posts and comments related to monitored issues." source="Source: Social Media">
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gridAutoRows: '75px', gap: '3px', color: 'white', fontSize: '11px', fontWeight: 'bold' }}>
-                    <div style={{ gridColumn: 'span 5', gridRow: 'span 3', backgroundColor: '#f59e0b', padding: '12px' }}>
+                  <div className="treemap-container">
+                    <div className="treemap-item" style={{ gridColumn: 'span 5', gridRow: 'span 3', backgroundColor: '#f59e0b', padding: '12px' }}>
                       PRABOWO<div style={{ fontSize: '16px', fontWeight: '800', marginTop: '4px' }}>(265)</div>
                     </div>
-                    <div style={{ gridColumn: 'span 4', gridRow: 'span 2', backgroundColor: '#06b6d4', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 4', gridRow: 'span 2', backgroundColor: '#06b6d4', padding: '10px' }}>
                       PRABOWOSUBIANTO (103)
                     </div>
-                    <div style={{ gridColumn: 'span 3', gridRow: 'span 1', backgroundColor: '#ec4899', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 3', gridRow: 'span 1', backgroundColor: '#ec4899', padding: '10px' }}>
                       KETAHANANPANGAN (45)
                     </div>
-                    <div style={{ gridColumn: 'span 3', gridRow: 'span 2', backgroundColor: '#8b5cf6', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 3', gridRow: 'span 2', backgroundColor: '#8b5cf6', padding: '10px' }}>
                       MBG (44)
                     </div>
-                    <div style={{ gridColumn: 'span 4', gridRow: 'span 1', backgroundColor: '#10b981', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 4', gridRow: 'span 1', backgroundColor: '#10b981', padding: '10px' }}>
                       HOTMANPARIS (67)
                     </div>
-                    <div style={{ gridColumn: 'span 3', gridRow: 'span 1', backgroundColor: '#3b82f6', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 3', gridRow: 'span 1', backgroundColor: '#3b82f6', padding: '10px' }}>
                       INDONESIA (54)
                     </div>
-                    <div style={{ gridColumn: 'span 5', gridRow: 'span 1', backgroundColor: '#f97316', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 5', gridRow: 'span 1', backgroundColor: '#f97316', padding: '10px' }}>
                       JAGAINDONESIA (52)
                     </div>
-                    <div style={{ gridColumn: 'span 4', gridRow: 'span 1', backgroundColor: '#dc2626', padding: '10px' }}>
+                    <div className="treemap-item" style={{ gridColumn: 'span 4', gridRow: 'span 1', backgroundColor: '#dc2626', padding: '10px' }}>
                       FEBRIEADRIANSYAH (50)
                     </div>
                   </div>
@@ -992,14 +1219,14 @@ export default function MediaDashboard({ onBack }) {
                     Latest Posts
                   </h2>
                 )}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+                <div className="grid-3">
                   {[
                     {
                       user: 'kompascom',
                       time: '18 hours ago',
                       platform: 'Tiktok',
                       avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=80&h=80&q=80',
-                      content: 'MBG Watch menyampaikan kritik dan aspirasi terkait pelaksanaan program Makan Bergizi Gratis (MBG) dalam Rapat Dengar Pendapat Umum (RDPU) bersama Komisi I...',
+                      content: 'MBG Watch menyampaikan kritik and aspirasi terkait pelaksanaan program Makan Bergizi Gratis (MBG) dalam Rapat Dengar Pendapat Umum (RDPU) bersama Komisi I...',
                       likes: '32.032', comments: '3.061', shares: '909', views: '14.649',
                       sentiments: ['Negative', 'Neutral']
                     },
@@ -1178,7 +1405,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* Sentiment Proportion & Sentiment Distribution */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '20px' }}>
+                <div className="grid-1-1-5">
                   {/* Sentiment Proportion */}
                   <DashboardCard title="Sentiment Proportion" subtitle="Displays the proportion of positive, negative, and neutral..." source="Mainstream Media">
                     <DonutChart data={newsSentimentProportion} />
@@ -1211,7 +1438,7 @@ export default function MediaDashboard({ onBack }) {
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#4b5563' }} /> Neutral</span>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><div style={{ width: '8px', height: '8px', borderRadius: '2px', backgroundColor: '#2563eb' }} /> Positive</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', height: '180px', paddingBottom: '20px', overflowX: 'auto' }}>
+                  <div className="bar-chart-stacked-container">
                     {[
                       { name: 'Indonesia', neg: 30, neu: 150, pos: 180 },
                       { name: 'Febrie Adriansyah', neg: 110, neu: 140, pos: 30 },
@@ -1230,7 +1457,7 @@ export default function MediaDashboard({ onBack }) {
                       const hPos = (target.pos / maxVal) * 120;
 
                       return (
-                        <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '70px', position: 'relative' }}>
+                        <div key={idx} className="bar-chart-stacked-item">
                           <div style={{ width: '20px', height: `${hPos}px`, backgroundColor: '#2563eb' }} />
                           <div style={{ width: '20px', height: `${hNeu}px`, backgroundColor: '#4b5563' }} />
                           <div style={{ width: '20px', height: `${hNeg}px`, backgroundColor: '#b91c1c' }} />
@@ -1255,7 +1482,7 @@ export default function MediaDashboard({ onBack }) {
                 )}
 
                 {/* Top Person & Top Keywords */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '20px' }}>
+                <div className="grid-1-1-5">
                   {/* Top Person Table */}
                   <DashboardCard title="Top Person" subtitle="Displays the top ten public figures most frequently mentioned." source="Mainstream Media">
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', textAlign: 'left' }}>
@@ -1309,7 +1536,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Top Influencer & Influencer Statements */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '20px' }}>
+                <div className="grid-1-1-5">
                   {/* Top Influencer News Table */}
                   <DashboardCard title="Top Influencer News" subtitle="Displays the top ten influencer most frequently mentioned." source="Mainstream Media">
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', textAlign: 'left' }}>
@@ -1347,7 +1574,7 @@ export default function MediaDashboard({ onBack }) {
 
                   {/* Influencers Statements Grid */}
                   <DashboardCard title="Influencers Statements News" subtitle="Displays the top ten individuals most frequently quoted or cited in mainstream media articles." source="Mainstream Media">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                    <div className="grid-statements">
                       {[
                         { name: 'Prabowo Subianto', time: '6 Minutes Ago', quote: 'Menurut Prabowo Subianto, proses hukum tidak memiliki hubungan dengan kewibawaan maupun marwah Presiden.', exp: 327, stat: '1.3K', badge: 'Neutral' },
                         { name: 'Hotman Paris Hutapea', time: '6 Minutes Ago', quote: 'Sebelumnya, Hotman Paris Hutapea menyatakan dirinya bersedia menjadi kuasa hukum Febrie Adriansyah...', exp: 134, stat: 624, badge: 'Negative' },
@@ -1375,7 +1602,7 @@ export default function MediaDashboard({ onBack }) {
                 </div>
 
                 {/* Top Media Outlets & Top News Location */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '20px' }}>
+                <div className="grid-1-1-5">
                   {/* Top Media Outlets Table */}
                   <DashboardCard title="Top Media Outlets" subtitle="Displays the top media outlets based on the volume of news content published." source="Mainstream Media">
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px', textAlign: 'left' }}>
@@ -1427,7 +1654,7 @@ export default function MediaDashboard({ onBack }) {
                         { name: 'Sumatera Utara', val: 80, percent: 10.7 }
                       ].map((row, idx) => (
                         <div key={idx} style={{ display: 'flex', alignItems: 'center', height: '18px' }}>
-                          <span style={{ width: '120px', textAlign: 'right', marginRight: '12px', fontWeight: '500', color: '#475569', flexShrink: 0 }}>
+                          <span className="bar-chart-label-long">
                             {row.name}
                           </span>
                           <div style={{ flexGrow: 1, height: '10px', backgroundColor: '#f1f5f9', borderRadius: '3px', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
@@ -1438,7 +1665,7 @@ export default function MediaDashboard({ onBack }) {
                               borderRadius: '3px'
                             }} />
                           </div>
-                          <span style={{ width: '55px', textAlign: 'left', marginLeft: '12px', fontWeight: '700', color: '#0f172a', flexShrink: 0 }}>
+                          <span className="bar-chart-value">
                             {row.val}
                           </span>
                         </div>
@@ -1458,14 +1685,14 @@ export default function MediaDashboard({ onBack }) {
                   </div>
                 )}
                 {/* Latest News Layout (Grid list on left, detailed view on right) */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '20px' }}>
+                <div className="grid-1-5-1">
 
                   {/* Left Side: News List */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     <h2 style={{ fontSize: '14px', fontWeight: '700', borderLeft: '4px solid #2563eb', paddingLeft: '8px' }}>
                       Latest News
                     </h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                    <div className="grid-2">
                       {newsList.map((news) => (
                         <div
                           key={news.id}
